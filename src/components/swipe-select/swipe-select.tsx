@@ -32,7 +32,7 @@ export class SwipeSelect {
     if (this.data != undefined)
       this.obj = JSON.parse(this.data)
 
-    var rootElement: any = document.querySelector(':root');
+    var rootElement: any = document.querySelector('swipe-select');
     rootElement.style.setProperty('--ss-primary', this.color);
   }
 
@@ -72,7 +72,7 @@ export class SwipeSelect {
   }
 
   connectedCallback() {
-    var rootElement: any = document.querySelector(':root');
+    var rootElement: any = document.querySelector('swipe-select');
 
     var swipeCss = document.createElement('link');
     swipeCss.rel = 'stylesheet';
