@@ -1,9 +1,7 @@
 # swipe-select
 
-
-
-<!-- Auto Generated Below -->
-
+#### How to use
+The usage is simple every property is optional, so you can decide use all or nothing.
 
 ## Properties
 
