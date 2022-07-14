@@ -21,6 +21,8 @@ export const config: Config = {
     },
   ],
   plugins: [
-    dotenvPlugin(),
+    dotenvPlugin({
+      preventAssignment: true
+    }),
   ]
 };

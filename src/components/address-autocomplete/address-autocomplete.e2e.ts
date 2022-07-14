@@ -1,32 +1,22 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('address-autocomplete', () => {
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})` : null;
+  }
+
   it('renders', async () => {
     const page = await newE2EPage();
-
     await page.setContent('<address-autocomplete></address-autocomplete>');
     const element = await page.find('address-autocomplete');
-    expect(element).toHaveClass('hydrated');
+    (expect(element) as any).toHaveClass('hydrated');
   });
 
-  it('renders changes to the name data', async () => {
+  it('renders changing color', async () => {
     const page = await newE2EPage();
-
-    await page.setContent('<address-autocomplete></address-autocomplete>');
-    const component = await page.find('address-autocomplete');
-    const element = await page.find('address-autocomplete >>> div');
-    expect(element.textContent).toEqual(`Hello, World! I'm `);
-
-    component.setProperty('first', 'James');
-    await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James`);
-
-    component.setProperty('last', 'Quincy');
-    await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James Quincy`);
-
-    component.setProperty('middle', 'Earl');
-    await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James Earl Quincy`);
+    await page.setContent('<address-autocomplete color="red"></address-autocomplete>');
+    const element = await page.find('button');
+    expect((await element.getComputedStyle()).backgroundColor).toEqual(hexToRgb(`#ff0000`));
   });
 });

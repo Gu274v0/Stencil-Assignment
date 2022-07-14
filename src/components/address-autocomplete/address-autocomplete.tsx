@@ -170,7 +170,8 @@ export class AddressAutocomplete {
               {!this._validator.validate(this.country) ? <span class="hint">{this._validator.errorMessage}</span> : null}
             </label>
           </div>
-          <input class="mt btn" type="submit" value="Submit" />
+
+          <button class="mt btn" type='submit'>Submit</button>
         </form>
       </div>
     )

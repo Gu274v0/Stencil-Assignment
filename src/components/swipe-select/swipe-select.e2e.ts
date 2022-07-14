@@ -1,32 +1,29 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('swipe-select', () => {
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})` : null;
+  }
+
   it('renders', async () => {
     const page = await newE2EPage();
-
     await page.setContent('<swipe-select></swipe-select>');
     const element = await page.find('swipe-select');
-    expect(element).toHaveClass('hydrated');
+    (expect(element) as any).toHaveClass('hydrated');
   });
 
-  it('renders changes to the name data', async () => {
+  it('renders changing color', async () => {
     const page = await newE2EPage();
+    await page.setContent('<swipe-select color="red"></swipe-select>');
+    const element = await page.find('small');
+    expect((await element.getComputedStyle()).color).toEqual(hexToRgb(`#ff0000`));
+  });
 
-    await page.setContent('<swipe-select></swipe-select>');
-    const component = await page.find('swipe-select');
-    const element = await page.find('swipe-select >>> div');
-    expect(element.textContent).toEqual(`Hello, World! I'm `);
-
-    component.setProperty('first', 'James');
-    await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James`);
-
-    component.setProperty('last', 'Quincy');
-    await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James Quincy`);
-
-    component.setProperty('middle', 'Earl');
-    await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James Earl Quincy`);
+  it('renders changing value', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<swipe-select value="10"></swipe-select>');
+    const element = await page.find('span');
+    expect((await element.innerHTML)).toEqual('10');
   });
 });
