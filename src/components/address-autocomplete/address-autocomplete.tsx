@@ -139,7 +139,7 @@ export class AddressAutocomplete {
 
             <label class="mt relative" htmlFor="street">
               Street
-              <input class='input' id="street" type="text" value={this.street} placeholder="Enter a location" onInput={(event: any) => this.street = event.target.value} autocomplete="on" />
+              <input class='input' id="street" type="text" value={this.street} placeholder="Your location" onInput={(event: any) => this.street = event.target.value} autocomplete="on" />
 
               {this.showIcon ? <div class="input-svg-button" onClick={(e) => this.handleSvgButton(e)}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map" viewBox="0 0 16 16">
@@ -153,20 +153,20 @@ export class AddressAutocomplete {
             <div class="row">
               <label class="mt me w-50" htmlFor="zipcode">
                 Zip code
-                <input class='input' id="zipcode" type="text" value={this.zipcode} onInput={(event: any) => this.zipcode = event.target.value} placeholder="Enter a location" />
+                <input class='input' id="zipcode" type="text" value={this.zipcode} onInput={(event: any) => this.zipcode = event.target.value} placeholder="Your zipcode" />
                 {!this._validator.validate(this.zipcode) ? <span class="hint">{this._validator.errorMessage}</span> : null}
               </label>
 
               <label class="mt w-100" htmlFor="city">
                 City
-                <input class='input' id="city" type="text" value={this.city} onInput={(event: any) => this.city = event.target.value} placeholder="Enter a location" />
+                <input class='input' id="city" type="text" value={this.city} onInput={(event: any) => this.city = event.target.value} placeholder="Your city" />
                 {!this._validator.validate(this.city) ? <span class="hint">{this._validator.errorMessage}</span> : null}
               </label>
             </div>
 
             <label class="mt" htmlFor="country">
               Country
-              <input class='input' id="country" type="text" value={this.country} onInput={(event: any) => this.country = event.target.value} placeholder="Enter a location" />
+              <input class='input' id="country" type="text" value={this.country} onInput={(event: any) => this.country = event.target.value} placeholder="Your country" />
               {!this._validator.validate(this.country) ? <span class="hint">{this._validator.errorMessage}</span> : null}
             </label>
           </div>
