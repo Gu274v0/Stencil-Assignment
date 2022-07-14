@@ -1,0 +1,152 @@
+:host {
+  --ss-primary: #00817a;
+  --ss-shadow: #bbb;
+  --ss-text: #474747;
+  --ss-font-family: Montserrat, sans-serif;
+  --ss-visibility: hidden;
+}
+
+.container {
+  box-shadow: 0 0 12px 0 var(--ss-shadow);
+  border-radius: 6px;
+  border-left: 6px solid var(--ss-primary);
+  padding: 6px 12px 6px 12px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.primary {
+  color: var(--ss-primary);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: var(--ss-text);
+}
+
+.subTitle {
+  font-size: 1.75rem;
+}
+
+span {
+  font-size: 1.2rem;
+  color: var(--ss-text);
+}
+
+small {
+  font-size: .875rem;
+  color: var(--ss-text);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.compose {
+  font-family: var(--ss-font-family);
+  font-weight: 600;
+}
+
+.swiper-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-wrapper {
+  align-items: center;
+}
+
+.mySwiper {
+  overflow: hidden;
+  position: relative;
+}
+
+.swiper-slide-active {
+  font-size: 2.5rem;
+  color: var(--ss-primary);
+}
+
+.justify-center {
+  justify-content: center;
+  text-align: center;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.swiper-slide-prev {
+  font-size: 2rem;
+}
+
+.swiper-slide-next {
+  font-size: 2rem;
+}
+
+.swipe-select::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 25%;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  pointer-events: none;
+  max-width: 150px;
+  left: 0;
+  background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
+}
+
+.swipe-select::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 25%;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  pointer-events: none;
+  max-width: 150px;
+  right: 0;
+  background: linear-gradient(270deg, #fff, hsla(0, 0%, 100%, 0));
+}
+
+.swipe-selector {
+  animation: opacity .5s ease-in;
+}
+
+@keyframes opacity {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
